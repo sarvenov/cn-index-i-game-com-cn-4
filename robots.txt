@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sarvenov.github.io/cn-index-i-game-com-cn-4/sitemap.xml

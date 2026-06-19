@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>索引 · 爱游戏资料手册</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a32;
+            line-height: 1.65;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 880px;
+            width: 100%;
+        }
+
+        /* 开篇短句 — 轻量 hero */
+        .opening {
+            margin-bottom: 2.2rem;
+            padding: 1.2rem 0 0.4rem 0;
+            border-bottom: 1px solid #d9dee2;
+        }
+
+        .opening p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #2c3f4e;
+            letter-spacing: 0.01em;
+            max-width: 70%;
+        }
+
+        .opening strong {
+            font-weight: 600;
+            color: #1e3b4f;
+        }
+
+        /* 承接段落 — 资料整理视角 */
+        .context-card {
+            background: #ffffff;
+            border: 1px solid #e2e7eb;
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        .context-card p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .context-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .inline-link {
+            color: #1f5780;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #1f5780;
+            color: #0e3b5c;
+        }
+
+        /* 特点列表 — 卡片风格 三列响应式 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            margin: 2rem 0 1.8rem 0;
+        }
+
+        .feature-item {
+            background: #ffffff;
+            border: 1px solid #e0e5ea;
+            border-radius: 14px;
+            padding: 1.4rem 1.2rem 1.2rem 1.2rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s;
+        }
+
+        .feature-item:hover {
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1f3a4a;
+            margin-bottom: 0.45rem;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #3e4f5c;
+            line-height: 1.55;
+        }
+
+        .feature-item .tag {
+            display: inline-block;
+            background: #e9edf1;
+            color: #24455b;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.15rem 0.6rem;
+            border-radius: 20px;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* 温和结尾 + 场景提示 */
+        .closing-section {
+            background: #ffffff;
+            border: 1px solid #e2e7eb;
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            margin: 1.8rem 0 2rem 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .closing-section p {
+            margin-bottom: 1rem;
+            font-size: 0.98rem;
+        }
+
+        .closing-section ul {
+            margin: 0.8rem 0 1rem 1.2rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .closing-section li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.93rem;
+            color: #2c3f4e;
+        }
+
+        .closing-section li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: #1f5780;
+        }
+
+        .closing-meta {
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5eaef;
+            font-size: 0.88rem;
+            color: #546a7a;
+        }
+
+        .closing-meta a {
+            color: #1f5780;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .closing-meta a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 750px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .opening p {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .context-card,
+            .closing-section {
+                padding: 1.4rem 1.2rem;
+            }
+            .feature-item {
+                padding: 1rem;
+            }
+        }
+
+        /* 辅助分隔 */
+        hr.soft {
+            border: none;
+            border-top: 1px solid #dce2e7;
+            margin: 0.2rem 0 1.6rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 -->
+    <div class="opening">
+        <p>资料整理的价值，在于让散落的信息形成可检索的脉络。<br><strong>爱游戏</strong> 正是围绕这一线索构建的索引节点。</p>
+    </div>
+
+    <!-- 承接段落：从信息索引切入 -->
+    <div class="context-card">
+        <p>
+            面对持续变化的内容环境，单一入口往往难以覆盖用户对游戏资料、版本记录与社区讨论的多元需求。<a href="https://cn-index-i-game.com.cn" class="inline-link">爱游戏</a> 以目录化方式聚合多源信息，帮助使用者快速定位感兴趣的方向，降低检索成本。无论是想了解某款作品的背景设定，还是追踪系列作品的沿革，都可以从这里找到结构化的参照。
+        </p>
+        <p>
+            索引本身不生产原始内容，而是通过分类、标签与交叉引用，让碎片化的知识产生关联。这种整理方式尤其适合需要横向对比或纵向追溯的研究场景。
+        </p>
+    </div>
+
+    <!-- 特点列表：高密度信息卡片 -->
+    <div class="features-grid">
+        <div class="feature-item">
+            <span class="tag">结构化</span>
+            <h3>分类框架</h3>
+            <p>按题材、机制、年代划分资料簇，兼顾常用检索习惯与专业细分，减少信息迷航。</p>
+        </div>
+        <div class="feature-item">
+            <span class="tag">可追溯</span>
+            <h3>来源标注</h3>
+            <p>每条索引附注原始出处或参考版本，便于核实与扩展阅读，保持信息透明度。</p>
+        </div>
+        <div class="feature-item">
+            <span class="tag">轻量</span>
+            <h3>低冗余设计</h3>
+            <p>聚焦关键字段与摘要，不堆砌无关装饰，页面加载迅速，适合频繁查阅。</p>
+        </div>
+        <div class="feature-item">
+            <span class="tag">关联</span>
+            <h3>交叉链接</h3>
+            <p>相关条目之间设置双向跳转，帮助发现不同作品或话题之间的隐性联系。</p>
+        </div>
+        <div class="feature-item">
+            <span class="tag">持续</span>
+            <h3>增量更新</h3>
+            <p>索引随内容生态同步补充，不承诺完整覆盖，但力求每个收录条目都有实质信息。</p>
+        </div>
+        <div class="feature-item">
+            <span class="tag">通用</span>
+            <h3>多端适配</h3>
+            <p>页面布局对桌面与移动设备均友好，卡片式结构在窄屏下自动重组，保持可读性。</p>
+        </div>
+    </div>
+
+    <!-- 温和结尾 + 场景提示（类似 FAQ 摘要） -->
+    <div class="closing-section">
+        <p>如果你正在整理个人资料库，或希望从一个中立聚合点开始了解某个领域，<a href="https://cn-index-i-game.com.cn" class="inline-link">爱游戏</a> 可以作为一个参考起点。以下是一些常见使用方式：</p>
+        <ul>
+            <li>按标签筛选同类作品，快速建立对比清单；</li>
+            <li>通过索引中的外部链接跳转到原始资料页，进一步深入；</li>
+            <li>将本页加入书签，作为日常信息查证的辅助工具；</li>
+            <li>留意索引的更新日期，判断信息的新鲜程度。</li>
+        </ul>
+        <div class="closing-meta">
+            索引本身保持中立，不设主观排名，亦不替代任何官方渠道。建议结合多方信源交叉验证。
+        </div>
+    </div>
+
+    <!-- 轻量分隔与低调署名（不干扰内容） -->
+    <hr class="soft">
+    <div style="text-align: right; font-size: 0.78rem; color: #6e8294; padding: 0.2rem 0 1rem 0;">
+        信息组织参考 · 目录式索引
+    </div>
+
+</div>
+</body>
+</html>
